@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
+
+<h1 align="center" style="color:red;">Friends Directory</h1>
+</head>
+<body>
+<form  action="{% url 'insert'%}">
+  <input type="submit"   name="insert" style="color:green;" align="center" value="Add more Friends"/><br><br><br>
+</form>
+   {%   if all_info%}
+    <table id="customers">
+        <tr><th>Id</th>
+        <th>Firstname</th>
+        <th>Lastname</th><th>Designation</th><th>Department</th><th>Date</th><th>Update</th><th>Delete</th>
+        </tr>
+
+        {% for info in all_info%}
+
+
+        <tr>
+            <form method="GET" action="{% url 'update'%}">
+            <td><input type="hidden" name="id" value="{{info.id }}"> {{info.id }}</td><td id="firstname">{{info.firstname}}</td><td id="lastname"> {{info.lastname}}</td><td id="designation"> {{info.designation}}</td><td id="department"> {{info.department}}</td>
+            <td id="date"> {{info.date}}</td>
+            <td><input type="submit" value="{{info.id}}" name="update"  style="color:green;"/></td>
+            <td><input type="submit" value="{{info.id}}"  name="delete" style="color:red;"/></td>
+            </form>
+        </tr>
+
+        {% endfor %}
+
+
+    </table>
+    {% else%}
+    <h3> Dont have any data in the database</h3>
+    {% endif  %}
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Friends</title>
+
+</head>
+<body>
+<h1 align="center">Update the List!</h1>
+<form method="GET" action="{% url 'create' %}" >
+    {% csrf_token %}
+    {%   if obj_info %}
+    <input type="hidden" name="id" value="{{obj_info.id}}"/><br><br>
+    FirstName:<input type="text" name="firstname" value="{{obj_info.firstname}}"/><br><br>
+    Lastname:<input type="text" name="lastname" value="{{obj_info.lastname}}"/><br><br>
+    Designation:<input type="text" name="designation" value="{{obj_info.designation}}"/><br><br>
+    Department:<input type="text" name="department"value="{{obj_info.department}}"/><br><br>
+    Date:<input type="text" name="date" value="{{obj_info.date}}"/><br><br><br>
+    <input type="submit" value="update"/><br>
+
+    {% else%}
+    <h3> Dont have any data in the database</h3>
+    {% endif%}
+    </form>
+
+</body>
+</html>

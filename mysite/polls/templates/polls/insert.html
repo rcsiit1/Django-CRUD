@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert Data</title>
+</head>
+<body>
+<h1 align="center">Add more Friends to the list!</h1>
+
+    <form method="GET" action="{% url 'store' %}" >
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{record}}"/><br><br>
+      FirstName:<input type="text" name="firstname" /><br><br>
+      Lastname:<input type="text" name="lastname" /><br><br>
+      Designation:<input type="text" name="designation" /><br><br>
+      Department:<input type="text" name="department"/><br><br>
+      Date:<input type="text" name="date" /><br><br><br>
+      <input type="submit" value="insert"/><br>
+    </form>
+
+</body>
+</html>
